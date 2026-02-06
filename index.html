@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-poppins w-full">
+    <div class="flex justify-between px-10 mt-5">
+      <div>
+        <h1 class="text-[#9D9570] md:text-[30px] font-meduim">Logo</h1>
+      </div>
+      <nav class="flex list-none md:gap-7 gap-5">
+        <li class="hover:text-[#9D9570] font-semibold">Home</li>
+        <li class="hover:text-[#9D9570] font-semibold">Our Team</li>
+        <li class="hover:text-[#9D9570] font-semibold">Gallery</li>
+      </nav>
+    </div>
+
+    <div class="mt-10 px-10 md:flex md:gap-10">
+      <div>
+        <div>
+          <h1 class="md:text-[40px] text-[30px]">WELCOME TO</h1>
+          <h2 class="md:text-[69px] text-[40px] font-bold">
+            Barbershop in <br />
+            Manhattan <br />
+            NEW YORK
+          </h2>
+        </div>
+        <div>
+          <div class="flex gap-3 mt-5">
+            <i class="fa-solid fa-location-dot text-[20px]"></i>
+            <h1>254 W 27ST ST, NEW YORK, NY 10011</h1>
+          </div>
+          <div class="flex gap-3 mt-5">
+            <i class="fa-solid fa-phone text-[20px]"></i>
+            <h1>​(212) 123-4567</h1>
+          </div>
+          <div class="flex gap-3 mt-5">
+            <i class="fa-solid fa-location-dot text-[20px]"></i>
+            <h1>254 W 27ST ST, NEW YORK, NY 10011</h1>
+          </div>
+          <div class="flex gap-3 mt-5">
+            <i class="fa-solid fa-phone text-[20px]"></i>
+            <h1>​(212) 123-4567</h1>
+          </div>
+          <div>
+            <button
+              class="shadow-lg px-8 py-3 rounded-2xl font-semibold mt-5 hover:text-white hover:bg-[#9D9570] shadow-lg"
+            >
+              Book Online
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <img
+          src="/image/image 1.png"
+          class="md:h-[600px] md:w-[630px]"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div
+      class="md:px-10 md:mt-16 mt-5 grid md:grid-cols-4 grid-cols-2 md:p-5 gap-4 p-6 md:gap-[150px]"
+    >
+      <div class="">
+        <img src="/image/image 5.png" alt="" />
+        <h1 class="text-[25px] md:mb-4 md:mt-5 mt-3 mb-3">Regular Haircut</h1>
+        <button
+          class="bg-black md:px-16 md:py-4 px-10 hover:text-black hover:bg-white shadow-lg py-3 text-white font-semibold rounded-2xl"
+        >
+          MORE
+        </button>
+      </div>
+      <div class="mt-10">
+        <img src="/image/image 6.png" alt="" />
+        <h1 class="text-[25px] md:mb-4 md:mt-5 mt-3 mb-3">Men's Facial</h1>
+        <button
+          class="bg-black md:px-16 md:py-4 px-10 hover:text-black hover:bg-white shadow-lg py-3 text-white font-semibold rounded-2xl"
+        >
+          MORE
+        </button>
+      </div>
+      <div class="mt-10">
+        <img src="/image/image 7.png" alt="" />
+        <h1 class="text-[25px] md:mb-4 md:mt-5 mt-3 mb-3">Royal Shave</h1>
+        <button
+          class="bg-black md:px-16 md:py-4 px-10 py-3 hover:text-black hover:bg-white shadow-lg text-white font-semibold rounded-2xl"
+        >
+          MORE
+        </button>
+      </div>
+      <div class="mt-10">
+        <img src="/image/image 8.png" alt="" />
+        <h1 class="text-[25px] md:mb-4 md:mt-5 mt-3 mb-3">Kids Haircut</h1>
+        <button
+          class="bg-black md:px-16 md:py-4 px-10 py-3 hover:text-black hover:bg-white shadow-lg text-white font-semibold rounded-2xl"
+        >
+          MORE
+        </button>
+      </div>
+    </div>
+    <div
+      class="h-[800px] bg-cover bg-center"
+      style="background-image: url(&quot;/image/image 9.png&quot;)"
+    >
+      <div class="md:px-20 pt-[200px] md:flex md:gap-9">
+        <div class="text-white p-9">
+          <h1 class="font-bold md:text-[60px] text-[30px]">Why choose us?</h1>
+          <p class="md:text-[25px] text-[20px] mb-5">
+            In addition, there 5 more reasons why men <br />
+            prefer Manhattan Barbershop N.Y.C
+          </p>
+          <li class="mb-3">Always welcoming environment</li>
+          <li></li>
+          <li class="mb-3">Our masters focus on the quality</li>
+          <li></li>
+          <li class="mb-3">
+            We value both the time and the money of our clients
+          </li>
+          <li></li>
+          <li class="mb-3">
+            We work only with high-quality, hypoallergenic premium products
+          </li>
+          <li></li>
+          <li class="mb-3">
+            All surfaces and tools are cleaned, disinfected before and after
+            using
+          </li>
+        </div>
+        <div class="bg-white p-6 rounded-2xl">
+          <div>
+            <h1
+              class="font-bold md:text-[40px] text-[30px] text-center text-[#9D9570]"
+            >
+              WORKING HOURSE
+            </h1>
+          </div>
+          <div class="text-center mt-5 text-[25px] space-y-3">
+            <h1>SUNDAY 10 AM – 5 PM</h1>
+            <h1>MONDAY 9 AM – 7PM</h1>
+            <h1>TUESDAY 8AM – 8PM</h1>
+            <h1>WEDNESDAY 8AM – 8PM</h1>
+            <h1>THURSDAY 8AM – 8PM</h1>
+            <h1>FRIDAY 8AM – 7PM</h1>
+            <h1>SATURDAY 9AM – 6PM</h1>
+          </div>
+          <div class="text-center py-2">
+            <button
+              class="border shadow-lg md:px-9 md:py-3 px-12 py-5 hover:text-white hover:bg-black rounded-2xl"
+            >
+              Book Online
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div>
+      <div class="text-center mt-5">
+        <h1 class="font-bold text-[50px]">Our Pricing</h1>
+      </div>
+
+      <div class="md:px-10 grid md:grid-cols-2 space-y-6 ml-[150px]">
+        <div class="flex md:gap-[120px] md:text-[20px]">
+          <h1>Regular Haircut</h1>
+          <h1 class="text-[#9D9570]">$34+</h1>
+        </div>
+
+        <div class="flex md:gap-[100px] md:text-[20px]">
+          <h1>Haircut + Royal Shave</h1>
+          <h1 class="text-[#9D9570]">$60+</h1>
+        </div>
+        <div class="flex gap-[70px] text-[20px]">
+          <h1>Beard Trim Machine</h1>
+          <h1 class="text-[#9D9570]">$23+</h1>
+        </div>
+
+        <div class="flex gap-[140px] text-[20px]">
+          <h1>Haircut and Facial</h1>
+          <h1 class="text-[#9D9570]">$50+</h1>
+        </div>
+
+        <div class="flex gap-[146px] text-[20px]">
+          <h1>Royal Shave</h1>
+          <h1 class="text-[#9D9570]">$35+</h1>
+        </div>
+
+        <div class="flex gap-[120px] text-[20px]">
+          <h1>Haircut + Beard Trim</h1>
+          <h1 class="text-[#9D9570]">$65+</h1>
+        </div>
+
+        <div class="flex gap-[120px] text-[20px]">
+          <h1>Beard + Facial</h1>
+          <h1 class="text-[#9D9570]">$55+</h1>
+        </div>
+
+        <div class="flex gap-[200px] text-[20px]">
+          <h1>Men’s Facial</h1>
+          <h1 class="text-[#9D9570]">$25+</h1>
+        </div>
+      </div>
+    </div> -->
+  </body>
+</html>
