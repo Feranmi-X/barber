@@ -333,7 +333,7 @@
       <div
         class="max-w-2xl w-full bg-white shadow-lg rounded-2xl p-6 md:ml-[290px] mt-10"
       >
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Customer Reviews</h2>
+        <h2 class="text-2xl font-bold mb-6 text-[#9D9570]">Customer Reviews</h2>
 
         <!-- Comment 1 -->
         <div class="flex items-start space-x-4 mb-6 mt-9">
@@ -372,20 +372,62 @@
             </p>
           </div>
         </div>
+      </div>
 
-        <!-- Comment Form -->
-        <form class="mt-6">
+      <div
+        class="mt-6 max-w-4xl w-full md:ml-[150px] bg-white shadow-xl rounded-2xl p-8 grid md:grid-cols-2 gap-8"
+      >
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-3xl font-bold mb-4 text-[#9D9570]">Contact Us</h2>
+          <p class="text-gray-600 mb-6">
+            Have questions or want to book an appointment? Reach out to us
+            anytime.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-center space-x-3">
+              <span class="text-black text-xl">📍</span>
+              <p class="text-gray-700">21 Dike street, Iwofe, Port Harcourt</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+              <span class="text-black text-xl">📞</span>
+              <p class="text-gray-700">+234 7089344370</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+              <span class="text-black text-xl">✉️</span>
+              <p class="text-gray-700">info@freshfade.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="space-y-4">
+          <input
+            type="text"
+            placeholder="Full Name"
+            class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+          />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+          />
+
           <textarea
+            rows="4"
+            placeholder="Your Message"
             class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black resize-none"
-            rows="3"
-            placeholder="Leave a comment..."
           ></textarea>
 
           <button
             type="submit"
-            class="mt-3 bg-black text-white px-5 py-2 rounded-xl hover:bg-gray-800 transition"
+            class="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition"
           >
-            Post Comment
+            Send Message
           </button>
         </form>
       </div>
