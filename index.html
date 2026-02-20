@@ -381,70 +381,130 @@
           </div>
         </div>
       </div>
-
       <div
-        class="mt-6 max-w-4xl w-full md:ml-[150px] bg-white shadow-xl rounded-2xl p-8 grid md:grid-cols-2 gap-8"
+        class="h-[800px] md:h-[600px] bg-cover bg-center"
+        style="background-image: url(&quot;image/image 10.png&quot;)"
       >
-        <!-- Contact Info -->
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-[#9D9570]">Contact Us</h2>
-          <p class="text-gray-600 mb-6">
-            Have questions or want to book an appointment? Reach out to us
-            anytime.
-          </p>
+        <div
+          class="mt-6 max-w-4xl md:pt-[200px] w-full md:ml-[150px] shadow-xl rounded-2xl p-8 grid md:grid-cols-2 gap-8"
+        >
+          <!-- Contact Info -->
+          <div>
+            <h2 class="text-xl font-bold mb-4 text-[#9D9570]">Contact Us</h2>
+            <p class="text-white mb-6">
+              Have questions or want to book an appointment? Reach out to us
+              anytime.
+            </p>
 
-          <div class="space-y-4">
-            <div class="flex items-center space-x-3">
-              <span class="text-black text-xl">📍</span>
-              <p class="text-gray-700">21 Dike street, Iwofe, Port Harcourt</p>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <span class="text-white text-xl">📍</span>
+                <p class="text-white">21 Dike street, Iwofe, Port Harcourt</p>
+              </div>
+
+              <div class="flex items-center space-x-3">
+                <span class="text-black text-xl">📞</span>
+                <p class="text-white">+234 7089344370</p>
+              </div>
+
+              <div class="flex items-center space-x-3">
+                <span class="text-white text-xl">✉️</span>
+                <p class="text-white">info@freshfade.com</p>
+              </div>
+              <div class="gap-5 text-[30px] text-[#9D9570]">
+                <i class="fa-brands fa-instagram hover:text-gray-500"></i>
+                <i class="fa-brands fa-x-twitter hover:text-gray-500"></i>
+                <i class="fa-brands fa-facebook-f hover:text-gray-500"></i>
+                <i class="fa-brands fa-whatsapp hover:text-gray-500"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="space-y-4">
+            <input
+              type="text"
+              placeholder="Full Name"
+              class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+            />
+
+            <input
+              type="email"
+              placeholder="Email Address"
+              class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+            />
+
+            <textarea
+              rows="4"
+              placeholder="Your Message"
+              class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black resize-none"
+            ></textarea>
+
+            <button
+              type="submit"
+              class="w-full bg-black text-white transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition duration-300 py-3 rounded-xl"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+      <footer class="bg-black text-gray-300">
+        <div class="max-w-7xl mx-auto px-6 py-14">
+          <!-- Top Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+            <!-- Brand -->
+            <div>
+              <h2 class="text-2xl font-bold text-[#9D9570]">Cut by Willy</h2>
+              <p class="mt-4 text-sm text-gray-400">
+                Premium grooming experience. Sharp cuts, clean fades, and
+                classic styles.
+              </p>
             </div>
 
-            <div class="flex items-center space-x-3">
-              <span class="text-black text-xl">📞</span>
-              <p class="text-gray-700">+234 7089344370</p>
+            <!-- Quick Links -->
+            <div>
+              <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="#" class="hover:text-[#9D9570] transition">Home</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-[#9D9570] transition"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="hover:text-[#9D9570] transition"
+                    >Services</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="hover:text-[#9D9570] transition"
+                    >Book Appointment</a
+                  >
+                </li>
+              </ul>
             </div>
+          </div>
 
-            <div class="flex items-center space-x-3">
-              <span class="text-black text-xl">✉️</span>
-              <p class="text-gray-700">info@freshfade.com</p>
-            </div>
-            <div class="gap-5 text-[30px] text-[#9D9570]">
-              <i class="fa-brands fa-instagram hover:text-gray-500"></i>
-              <i class="fa-brands fa-x-twitter hover:text-gray-500"></i>
-              <i class="fa-brands fa-facebook-f hover:text-gray-500"></i>
-              <i class="fa-brands fa-whatsapp hover:text-gray-500"></i>
+          <!-- Divider -->
+          <div
+            class="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center"
+          >
+            <p class="text-sm text-gray-500">
+              © 2026 Cut by Willy Barbershop. All rights reserved.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="flex space-x-5 mt-4 md:mt-0">
+              <a href="#" class="hover:text-[#9D9570] transition">Instagram</a>
+              <a href="#" class="hover:text-[#9D9570] transition">Facebook</a>
+              <a href="#" class="hover:text-[#9D9570] transition">Twitter</a>
             </div>
           </div>
         </div>
-
-        <!-- Contact Form -->
-        <form class="space-y-4">
-          <input
-            type="text"
-            placeholder="Full Name"
-            class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
-          />
-
-          <input
-            type="email"
-            placeholder="Email Address"
-            class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
-          />
-
-          <textarea
-            rows="4"
-            placeholder="Your Message"
-            class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black resize-none"
-          ></textarea>
-
-          <button
-            type="submit"
-            class="w-full bg-black text-white transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition duration-300 py-3 rounded-xl"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
+      </footer>
     </div>
 
     <div
@@ -467,7 +527,6 @@
           Enter
         </button>
       </div>
-      <footer></footer>
     </div>
 
     <!-- Page Content -->
