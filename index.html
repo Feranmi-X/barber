@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Cut by Willy – Premium Barbershop | Port Harcourt</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -19,531 +19,1713 @@
           extend: {
             fontFamily: {
               poppins: ["Poppins", "sans-serif"],
+              playfair: ["Playfair Display", "serif"],
+            },
+            colors: {
+              gold: "#9D9570",
+              "gold-light": "#b8af8a",
+              "gold-dark": "#7a7254",
             },
           },
         },
       };
     </script>
+    <style>
+      :root {
+        --gold: #9d9570;
+        --gold-light: #b8af8a;
+        --gold-dark: #7a7254;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+      @keyframes pulse-gold {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(157, 149, 112, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 0 12px rgba(157, 149, 112, 0);
+        }
+      }
+      @keyframes scissors {
+        0%,
+        100% {
+          transform: rotate(-10deg);
+        }
+        50% {
+          transform: rotate(10deg);
+        }
+      }
+
+      .animate-fade-up {
+        animation: fadeInUp 0.7s ease forwards;
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease forwards;
+      }
+      .animate-scale-in {
+        animation: scaleIn 0.5s ease forwards;
+      }
+      .animate-slide-right {
+        animation: slideInRight 0.7s ease forwards;
+      }
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+      .opacity-0-init {
+        opacity: 0;
+      }
+
+      .shimmer-text {
+        background: linear-gradient(
+          90deg,
+          var(--gold) 0%,
+          #e8e0c0 50%,
+          var(--gold) 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s linear infinite;
+      }
+
+      /* Navbar */
+      .navbar-scrolled {
+        background: rgba(255, 255, 255, 0.97) !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12) !important;
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gold);
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Cards */
+      .service-card {
+        transition:
+          transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+          box-shadow 0.35s;
+      }
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Buttons */
+      .btn-gold {
+        background: var(--gold);
+        color: white;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-gold::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.4s ease;
+      }
+      .btn-gold:hover::before {
+        left: 100%;
+      }
+      .btn-gold:hover {
+        background: var(--gold-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(157, 149, 112, 0.45);
+      }
+
+      .btn-outline {
+        border: 2px solid var(--gold);
+        color: var(--gold);
+        transition: all 0.3s ease;
+      }
+      .btn-outline:hover {
+        background: var(--gold);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .btn-dark {
+        background: #111;
+        color: white;
+        transition: all 0.3s ease;
+      }
+      .btn-dark:hover {
+        background: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+      }
+
+      .pulse-btn {
+        animation: pulse-gold 2s infinite;
+      }
+
+      /* Gallery */
+      .gallery-img {
+        transition:
+          transform 0.4s ease,
+          filter 0.4s ease;
+        filter: brightness(0.9);
+      }
+      .gallery-img:hover {
+        transform: scale(1.06);
+        filter: brightness(1.05);
+      }
+
+      /* Price rows */
+      .price-row {
+        transition: background 0.2s;
+        padding: 14px 12px;
+        border-radius: 10px;
+      }
+      .price-row:hover {
+        background: rgba(157, 149, 112, 0.08);
+      }
+
+      /* Reviews */
+      .review-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .review-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Mobile menu */
+      #mobileMenu {
+        transition:
+          max-height 0.4s ease,
+          opacity 0.4s ease;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      #mobileMenu.open {
+        max-height: 300px;
+        opacity: 1;
+      }
+
+      /* Form focus */
+      .form-input:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(157, 149, 112, 0.2);
+      }
+
+      /* Divider ornament */
+      .divider-gold {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .divider-gold::before,
+      .divider-gold::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.4;
+      }
+
+      /* Hero background overlay pattern */
+      .hero-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239D9570' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      /* Scissor icon decoration */
+      .scissors-icon {
+        animation: scissors 2s ease-in-out infinite;
+        display: inline-block;
+      }
+
+      /* Toast notification */
+      #toast {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #111;
+        color: white;
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        transform: translateY(80px);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        z-index: 9999;
+        border-left: 4px solid var(--gold);
+      }
+      #toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Popup */
+      #welcomePopup {
+        transition: opacity 0.4s ease;
+      }
+      #welcomePopup.hiding {
+        opacity: 0;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 3px;
+      }
+
+      /* Lightbox */
+      #lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      }
+      #lightbox.active {
+        display: flex;
+      }
+      #lightbox img {
+        max-width: 90vw;
+        max-height: 85vh;
+        border-radius: 12px;
+      }
+
+      /* Back to top */
+      #backToTop {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 44px;
+        height: 44px;
+        background: var(--gold);
+        color: white;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 999;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(157, 149, 112, 0.5);
+      }
+      #backToTop.visible {
+        display: flex;
+      }
+      #backToTop:hover {
+        background: var(--gold-dark);
+        transform: translateY(-3px);
+      }
+    </style>
   </head>
-  <body class="font-poppins w-full">
-    <div
-      class="sticky top-0 z-50 flex justify-between px-5 mt-5 border-b shadow-lg p-5"
-    >
-      <div>
-        <h1 class="text-[#9D9570] md:text-[30px] text-[12px] font-meduim">
-          Cut_by_willy
-        </h1>
-      </div>
-      <nav class="flex list-none md:gap-7 gap-5">
-        <li class="hover:text-[#9D9570] font-semibold">
-          <a href="/index.html">Home</a>
-        </li>
-        <li class="hover:text-[#9D9570] font-semibold">
-          <a href="#first">Our Team</a>
-        </li>
-        <li class="hover:text-[#9D9570] font-semibold">Gallery</li>
-      </nav>
-    </div>
-
-    <div class="mt-10 px-10 md:flex md:gap-10">
-      <div>
-        <div>
-          <h1 class="md:text-[40px] text-[30px]">WELCOME TO</h1>
-          <h2 class="md:text-[69px] text-[40px] font-bold text-[#9D9570]">
-            Barbershop in <br />
-            Rivers State <br />
-            PORT HARCOURT
-          </h2>
-        </div>
-        <div>
-          <div class="flex gap-3 mt-5">
-            <i class="fa-solid fa-location-dot text-[20px]"></i>
-            <h1>21 Dike street, Iwofe, Port Harcourt</h1>
-          </div>
-          <div class="flex gap-3 mt-5">
-            <i class="fa-solid fa-phone text-[20px]"></i>
-            <h1>​07089344370</h1>
-          </div>
-          <div class="flex gap-3 mt-5">
-            <i class="fa-solid fa-location-dot text-[20px]"></i>
-            <h1>21 Dike street, Iwofe, Port Harcourt</h1>
-          </div>
-          <div class="flex gap-3 mt-5">
-            <i class="fa-solid fa-phone text-[20px]"></i>
-            <h1>​07089344370</h1>
-          </div>
-          <div class="gap-5 text-[30px] text-[#9D9570] mt-6">
-            <i class="fa-brands fa-instagram hover:text-gray-500"></i>
-            <i class="fa-brands fa-x-twitter hover:text-gray-500"></i>
-            <i class="fa-brands fa-facebook-f hover:text-gray-500"></i>
-            <i class="fa-brands fa-whatsapp hover:text-gray-500"></i>
-          </div>
-          <div>
-            <button
-              class="shadow-lg px-8 py-3 rounded-2xl font-semibold mt-5 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] shadow-lg"
-            >
-              <a href="/Booknow.html">Book Online</a>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="mt-5">
-        <img
-          src="/image/WhatsApp Image 2026-02-15 at 6.58.31 AM.jpeg"
-          class="md:h-[600px] md:w-[630px] rounded-2xl"
-          alt=""
-        />
-      </div>
-    </div>
-
-    <div class="md:mt-16 mt-5 grid md:grid-cols-4 grid-cols-2 md:p-5 gap-4 p-6">
-      <div
-        class="border px-10 p-5 shadow-lg rounded-2xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
-      >
-        <img src="/image/image 5.png" class="md:ml-4" alt="" />
-        <h1
-          class="md:text-[25px] text-[19px] md:mb-4 md:mt-5 mt-3 mb-3 font-semibold"
-        >
-          Regular Haircut
-        </h1>
-        <div class="md:-ml-7 flex justify-center">
-          <button
-            class="bg-[#9D9570] md:px-14 md:py-4 px-8 hover:text-black hover:bg-white shadow-lg py-3 text-white font-semibold rounded-2xl"
-          >
-            <a href="#second">MORE</a>
-          </button>
-        </div>
-      </div>
-      <div
-        class="border px-10 p-5 shadow-lg rounded-2xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
-      >
-        <img src="/image/image 6.png" class="md:ml-4" alt="" />
-        <h1
-          class="md:text-[25px] text-[19px] md:mb-4 md:mt-5 mt-3 mb-3 font-semibold"
-        >
-          Men's Facial
-        </h1>
-        <div class="md:-ml-7 flex justify-center">
-          <button
-            class="bg-[#9D9570] md:px-14 md:py-4 px-8 hover:text-black hover:bg-white shadow-lg py-3 text-white font-semibold rounded-2xl"
-          >
-            <a href="#second">MORE</a>
-          </button>
-        </div>
-      </div>
-      <div
-        class="border px-10 p-5 shadow-lg rounded-2xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
-      >
-        <img src="/image/image 7.png" class="md:ml-4" alt="" />
-        <h1
-          class="md:text-[25px] text-[19px] md:mb-4 md:mt-5 mt-3 mb-3 font-semibold"
-        >
-          Royal Shave
-        </h1>
-        <div class="md:-ml-7 flex justify-center">
-          <button
-            class="bg-[#9D9570] md:px-14 md:py-4 px-8 hover:text-black hover:bg-white shadow-lg py-3 text-white font-semibold rounded-2xl"
-          >
-            <a href="#second">MORE</a>
-          </button>
-        </div>
-      </div>
-      <div
-        class="border px-10 p-5 shadow-lg rounded-2xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
-      >
-        <img src="/image/image 8.png" class="md:ml-4" alt="" />
-        <h1
-          class="md:text-[25px] text-[19px] md:mb-4 md:mt-5 mt-3 mb-3 font-semibold"
-        >
-          Kids Haircut
-        </h1>
-        <div class="md:-ml-7 flex justify-center">
-          <button
-            class="bg-[#9D9570] md:px-14 md:py-4 px-8 hover:text-black hover:bg-white shadow-lg py-3 text-white font-semibold rounded-2xl"
-          >
-            <a href="#second">MORE</a>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      class="h-[800px] bg-cover bg-center"
-      style="background-image: url(&quot;image/Rectangle 26.png&quot;)"
-    >
-      <div class="md:px-20 pt-[200px] md:flex md:gap-9">
-        <div class="text-white p-9">
-          <h1 class="font-bold md:text-[60px] text-[30px]">Why choose us?</h1>
-          <p class="md:text-[25px] text-[20px] mb-5">
-            In addition, there 5 more reasons why men <br />
-            prefer Manhattan Barbershop N.Y.C
-          </p>
-          <li class="mb-3">Always welcoming environment</li>
-          <li></li>
-          <li class="mb-3">Our masters focus on the quality</li>
-          <li></li>
-          <li class="mb-3">
-            We value both the time and the money of our clients
-          </li>
-          <li></li>
-          <li class="mb-3">
-            We work only with high-quality, hypoallergenic premium products
-          </li>
-          <li></li>
-          <li class="mb-3">
-            All surfaces and tools are cleaned, disinfected before and after
-            using
-          </li>
-        </div>
-        <div class="bg-white p-6 rounded-2xl">
-          <div>
-            <h1
-              class="font-bold md:text-[40px] text-[30px] text-center text-[#9D9570]"
-            >
-              WORKING HOURS
-            </h1>
-          </div>
-          <div class="text-center mt-5 text-[25px] space-y-3">
-            <h1>SUNDAY 10 AM – 5 PM</h1>
-            <h1>MONDAY 9 AM – 7PM</h1>
-            <h1>TUESDAY 8AM – 8PM</h1>
-            <h1>WEDNESDAY 8AM – 8PM</h1>
-            <h1>THURSDAY 8AM – 8PM</h1>
-            <h1>FRIDAY 8AM – 7PM</h1>
-            <h1>SATURDAY 9AM – 6PM</h1>
-          </div>
-          <div class="text-center py-2">
-            <button
-              class="border bg-[#9D9570] shadow-lg md:px-9 md:py-3 px-12 py-5 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] rounded-2xl"
-            >
-              <a href="/Booknow.html"> Book Online</a>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="w-full md:mt-20">
-        <!-- Mobile Carousel -->
-        <div
-          class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 md:hidden"
-        >
-          <div
-            class="snap-center shrink-0 w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
-          >
-            <img
-              src="/image/Rectangle 21.png"
-              class="w-full h-64 object-cover"
-            />
-          </div>
-
-          <div
-            class="snap-center shrink-0 w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
-          >
-            <img src="/image/uu.jpeg" class="w-full h-64 object-cover" />
-          </div>
-
-          <div
-            class="snap-center shrink-0 w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
-          >
-            <img
-              src="/image/WhatsApp Image 2026-02-15 at 6.58.29 AM.jpeg"
-              class="w-full h-64 object-cover"
-            />
-          </div>
-          <div
-            class="snap-center shrink-0 w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
-          >
-            <img
-              src="/image/WhatsApp Image 2026-02-15 at 6.58.31 AM (3).jpeg"
-              class="w-full h-64 object-cover"
-            />
-          </div>
-          <div
-            class="snap-center shrink-0 w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
-          >
-            <img
-              src="/image/Rectangle 23.png"
-              class="w-full h-64 object-cover"
-            />
-          </div>
-          <div
-            class="snap-center shrink-0 w-72 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
-          >
-            <img src="/image/r" class="w-full h-64 object-cover" />
-          </div>
-        </div>
-
-        <!-- Desktop Flex Layout -->
-        <div class="hidden md:flex gap-8 justify-center px-10">
-          <div class="w-72 rounded-xl overflow-hidden shadow-lg">
-            <img src="/image/uu.jpeg" class="w-full h-64 object-cover" />
-          </div>
-
-          <div class="w-72 rounded-xl overflow-hidden shadow-lg">
-            <img
-              src="/image/WhatsApp Image 2026-02-15 at 6.58.29 AM.jpeg"
-              class="w-full h-64 object-cover"
-            />
-          </div>
-
-          <div class="w-72 rounded-xl overflow-hidden shadow-lg">
-            <img
-              src="/image/WhatsApp Image 2026-02-15 at 6.58.31 AM (3).jpeg"
-              class="w-full h-64 object-cover"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Header -->
-      <div class="text-center mb-8 mt-5">
-        <h1 class="text-3xl font-bold text-gray-800">Fresh Cuts Barbershop</h1>
-        <p class="text-gray-500 mt-2 font-semibold">Our Price List</p>
-      </div>
-
-      <!-- Price List -->
-      <div id="second" class="space-y-4 p-5">
-        <div class="flex justify-between border-b pb-2">
-          <span class="text-gray-700 font-medium">Regular Haircut</span>
-          <span class="text-gray-900 font-semibold">15k</span>
-        </div>
-
-        <div class="flex justify-between border-b pb-2">
-          <span class="text-gray-700 font-medium">Skin Fade</span>
-          <span class="text-gray-900 font-semibold">10k</span>
-        </div>
-
-        <div class="flex justify-between border-b pb-2">
-          <span class="text-gray-700 font-medium">Beard Trim</span>
-          <span class="text-gray-900 font-semibold">8k</span>
-        </div>
-
-        <div class="flex justify-between border-b pb-2">
-          <span class="text-gray-700 font-medium">Haircut + Beard</span>
-          <span class="text-gray-900 font-semibold">18k</span>
-        </div>
-
-        <div class="flex justify-between border-b pb-2">
-          <span class="text-gray-700 font-medium">Kids Haircut</span>
-          <span class="text-gray-900 font-semibold">5k</span>
-        </div>
-
-        <div class="flex justify-between">
-          <span class="text-gray-700 font-medium">Home Service</span>
-          <span class="text-gray-900 font-semibold">15k</span>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div class="mt-8 text-center">
-        <button
-          class="bg-[#9D9570] text-white px-6 py-2 rounded-full transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition duration-300"
-        >
-          <a href="/Booknow.html">Book Appointment </a>
-        </button>
-      </div>
-
-      <div
-        class="max-w-2xl w-full bg-white shadow-lg rounded-2xl p-7 md:ml-[290px] mt-10"
-      >
-        <h2 class="text-2xl font-bold mb-6 text-[#9D9570]">Customer Reviews</h2>
-
-        <!-- Comment 1 -->
-        <div class="flex items-start space-x-4 mb-6 mt-9">
-          <img
-            src="/image/WhatsApp Image 2026-02-18 at 11.54.59 AM.jpeg"
-            class="w-12 h-12 rounded-full"
-            alt="User"
-          />
-          <div class="bg-gray-100 p-4 rounded-xl w-full">
-            <div class="flex justify-between items-center mb-2">
-              <h4 class="font-semibold text-gray-800">Feranmi Solomon</h4>
-              <span class="text-sm text-gray-500">2 days ago</span>
-            </div>
-            <p class="text-gray-700">
-              The fade was super clean 🔥 Best barbing experience I’ve had in a
-              while!
-            </p>
-          </div>
-        </div>
-
-        <!-- Comment 2 -->
-        <div class="flex items-start space-x-4 mb-6">
-          <img
-            src="/image/WhatsApp Image 2026-02-18 at 11.54.10 AM.jpeg"
-            class="w-12 h-12 rounded-full"
-            alt="User"
-          />
-          <div class="bg-gray-100 p-4 rounded-xl w-full">
-            <div class="flex justify-between items-center mb-2">
-              <h4 class="font-semibold text-gray-800">Wisdom</h4>
-              <span class="text-sm text-gray-500">1 week ago</span>
-            </div>
-            <p class="text-gray-700">
-              Very professional service and neat environment. I’ll definitely
-              come back.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div
-        class="h-[800px] md:h-[600px] bg-cover bg-center"
-        style="background-image: url(&quot;image/image 10.png&quot;)"
-      >
-        <div
-          class="mt-6 max-w-4xl md:pt-[200px] w-full md:ml-[150px] shadow-xl rounded-2xl p-8 grid md:grid-cols-2 gap-8"
-        >
-          <!-- Contact Info -->
-          <div>
-            <h2 id="first" class="text-xl font-bold mb-4 text-[#9D9570]">
-              Contact Us
-            </h2>
-            <p class="text-white mb-6">
-              Have questions or want to book an appointment? Reach out to us
-              anytime.
-            </p>
-
-            <div class="space-y-4">
-              <div class="flex items-center space-x-3">
-                <span class="text-white text-xl">📍</span>
-                <p class="text-white">21 Dike street, Iwofe, Port Harcourt</p>
-              </div>
-
-              <div class="flex items-center space-x-3">
-                <span class="text-black text-xl">📞</span>
-                <p class="text-white">+234 7089344370</p>
-              </div>
-
-              <div class="flex items-center space-x-3">
-                <span class="text-white text-xl">✉️</span>
-                <p class="text-white">info@freshfade.com</p>
-              </div>
-              <div class="gap-5 text-[30px] text-[#9D9570]">
-                <i class="fa-brands fa-instagram hover:text-gray-500"></i>
-                <i class="fa-brands fa-x-twitter hover:text-gray-500"></i>
-                <i class="fa-brands fa-facebook-f hover:text-gray-500"></i>
-                <i class="fa-brands fa-whatsapp hover:text-gray-500"></i>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Form -->
-          <form class="space-y-4">
-            <input
-              type="text"
-              placeholder="Full Name"
-              class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
-            />
-
-            <input
-              type="email"
-              placeholder="Email Address"
-              class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
-            />
-
-            <textarea
-              rows="4"
-              placeholder="Your Message"
-              class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black resize-none"
-            ></textarea>
-
-            <button
-              type="submit"
-              class="w-full bg-black text-white transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition duration-300 py-3 rounded-xl"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-      <footer class="bg-black text-gray-300">
-        <div class="max-w-7xl mx-auto px-6 py-14">
-          <!-- Top Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-            <!-- Brand -->
-            <div>
-              <h2 class="text-2xl font-bold text-[#9D9570]">Cut by Willy</h2>
-              <p class="mt-4 text-sm text-gray-400">
-                Premium grooming experience. Sharp cuts, clean fades, and
-                classic styles.
-              </p>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-              <h3 class="text-white font-semibold mb-4">Quick Links</h3>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a href="#" class="hover:text-[#9D9570] transition">Home</a>
-                </li>
-                <li>
-                  <a href="#" class="hover:text-[#9D9570] transition"
-                    >About Us</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="hover:text-[#9D9570] transition"
-                    >Services</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="hover:text-[#9D9570] transition"
-                    >Book Appointment</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Divider -->
-          <div
-            class="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center"
-          >
-            <p class="text-sm text-gray-500">
-              © 2026 Cut by Willy Barbershop. All rights reserved.
-            </p>
-
-            <!-- Social Icons -->
-            <div class="flex space-x-5 mt-4 md:mt-0">
-              <a href="#" class="hover:text-[#9D9570] transition">Instagram</a>
-              <a href="#" class="hover:text-[#9D9570] transition">Facebook</a>
-              <a href="#" class="hover:text-[#9D9570] transition">Twitter</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-
+  <body class="font-poppins bg-white text-gray-900">
+    <!-- ====== WELCOME POPUP ====== -->
     <div
       id="welcomePopup"
-      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
     >
       <div
-        class="bg-white w-80 p-8 rounded-2xl text-center shadow-2xl transform transition-all duration-300 scale-100"
+        class="bg-white w-[340px] rounded-3xl text-center shadow-2xl overflow-hidden animate-scale-in"
       >
-        <h2 class="text-2xl font-bold mb-3">✂️ Welcome to Cut by Willy</h2>
+        <div class="bg-black py-8 px-8">
+          <span class="text-5xl scissors-icon">✂️</span>
+          <h2 class="text-2xl font-playfair font-bold mt-4 shimmer-text">
+            Cut by Willy
+          </h2>
+          <p class="text-gray-400 mt-1 text-sm font-light">
+            Port Harcourt's Premier Barbershop
+          </p>
+        </div>
+        <div class="p-8">
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Where Style Meets Precision. Step in for a fresh look, or book
+            online in seconds.
+          </p>
+          <button
+            onclick="closePopup()"
+            class="btn-gold w-full py-3 rounded-xl font-semibold text-sm tracking-wide pulse-btn"
+          >
+            Enter the Shop ✂️
+          </button>
+        </div>
+      </div>
+    </div>
 
-        <p class="text-gray-600 mb-6">
-          Where Style Meets Precision. Book your fresh look today.
-        </p>
-
-        <button
-          onclick="closePopup()"
-          class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
+    <!-- ====== NAVBAR ====== -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white/80 backdrop-blur-md"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="font-playfair text-2xl font-bold"
+          style="color: var(--gold)"
+          >Cut<span class="text-gray-900">_by_</span>Willy</a
         >
-          Enter
+
+        <!-- Desktop Nav -->
+        <ul
+          class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-700"
+        >
+          <li>
+            <a href="#home" class="nav-link hover:text-gold transition-colors"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              class="nav-link hover:text-gold transition-colors"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#gallery"
+              class="nav-link hover:text-gold transition-colors"
+              >Gallery</a
+            >
+          </li>
+          <li>
+            <a
+              href="#pricing"
+              class="nav-link hover:text-gold transition-colors"
+              >Pricing</a
+            >
+          </li>
+          <li>
+            <a
+              href="#reviews"
+              class="nav-link hover:text-gold transition-colors"
+              >Reviews</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="nav-link hover:text-gold transition-colors"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <button
+              onclick="openBooking()"
+              class="btn-gold px-5 py-2 rounded-xl text-sm font-semibold"
+            >
+              Book Now
+            </button>
+          </li>
+        </ul>
+
+        <!-- Mobile Hamburger -->
+        <button
+          id="hamburger"
+          onclick="toggleMobileMenu()"
+          class="md:hidden flex flex-col gap-1.5 p-2"
+        >
+          <span
+            class="block w-6 h-0.5 bg-gray-800 transition-all duration-300"
+            id="bar1"
+          ></span>
+          <span
+            class="block w-6 h-0.5 bg-gray-800 transition-all duration-300"
+            id="bar2"
+          ></span>
+          <span
+            class="block w-6 h-0.5 bg-gray-800 transition-all duration-300"
+            id="bar3"
+          ></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden bg-white border-t px-6 py-0">
+        <ul class="flex flex-col gap-4 py-5 text-sm font-medium text-gray-700">
+          <li>
+            <a
+              href="#home"
+              onclick="closeMobileMenu()"
+              class="hover:text-gold transition-colors block"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              onclick="closeMobileMenu()"
+              class="hover:text-gold transition-colors block"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#gallery"
+              onclick="closeMobileMenu()"
+              class="hover:text-gold transition-colors block"
+              >Gallery</a
+            >
+          </li>
+          <li>
+            <a
+              href="#pricing"
+              onclick="closeMobileMenu()"
+              class="hover:text-gold transition-colors block"
+              >Pricing</a
+            >
+          </li>
+          <li>
+            <a
+              href="#reviews"
+              onclick="closeMobileMenu()"
+              class="hover:text-gold transition-colors block"
+              >Reviews</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              onclick="closeMobileMenu()"
+              class="hover:text-gold transition-colors block"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <button
+              onclick="
+                openBooking();
+                closeMobileMenu();
+              "
+              class="btn-gold w-full py-2.5 rounded-xl font-semibold"
+            >
+              Book Now
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <section
+      id="home"
+      class="min-h-screen pt-24 pb-16 hero-pattern flex items-center"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <!-- Text -->
+        <div class="opacity-0-init animate-fade-up">
+          <span
+            class="inline-block bg-gold/10 text-gold text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6"
+            >Port Harcourt's #1 Barbershop</span
+          >
+          <h1
+            class="font-playfair text-5xl md:text-7xl font-black leading-tight text-gray-900 mb-2"
+          >
+            WELCOME TO
+          </h1>
+          <h2
+            class="font-playfair text-5xl md:text-6xl font-black leading-tight"
+            style="color: var(--gold)"
+          >
+            Cut by Willy
+          </h2>
+          <p
+            class="text-gray-500 mt-5 text-base md:text-lg leading-relaxed max-w-md"
+          >
+            Premium grooming for the modern man. Sharp fades, clean lines, and
+            classic styles — delivered with precision in Rivers State.
+          </p>
+
+          <div class="mt-6 space-y-3 text-sm text-gray-600">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center"
+              >
+                <i class="fa-solid fa-location-dot text-gold text-xs"></i>
+              </div>
+              <span>21 Dike Street, Iwofe, Port Harcourt</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center"
+              >
+                <i class="fa-solid fa-phone text-gold text-xs"></i>
+              </div>
+              <a
+                href="tel:+2347089344370"
+                class="hover:text-gold transition-colors"
+                >+234 708 934 4370</a
+              >
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-4">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gold hover:text-white flex items-center justify-center text-gray-600 transition-all duration-300"
+              ><i class="fa-brands fa-instagram text-sm"></i
+            ></a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gold hover:text-white flex items-center justify-center text-gray-600 transition-all duration-300"
+              ><i class="fa-brands fa-x-twitter text-sm"></i
+            ></a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gold hover:text-white flex items-center justify-center text-gray-600 transition-all duration-300"
+              ><i class="fa-brands fa-facebook-f text-sm"></i
+            ></a>
+            <a
+              href="https://wa.me/2347089344370"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gold hover:text-white flex items-center justify-center text-gray-600 transition-all duration-300"
+              ><i class="fa-brands fa-whatsapp text-sm"></i
+            ></a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <button
+              onclick="openBooking()"
+              class="btn-gold px-8 py-3.5 rounded-xl font-semibold text-sm tracking-wide"
+            >
+              <i class="fa-solid fa-calendar-check mr-2"></i>Book Appointment
+            </button>
+            <a
+              href="#services"
+              class="btn-outline px-8 py-3.5 rounded-xl font-semibold text-sm tracking-wide"
+              >View Services</a
+            >
+          </div>
+        </div>
+
+        <!-- Hero Image Placeholder -->
+        <div class="opacity-0-init animate-slide-right delay-200">
+          <div class="relative">
+            <div
+              class="w-full h-[480px] md:h-[560px] rounded-3xl bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden shadow-2xl flex items-center justify-center"
+            >
+              <div class="text-center text-gray-400">
+                <i
+                  class="fa-solid fa-scissors text-8xl mb-4"
+                  style="color: var(--gold); opacity: 0.3"
+                ></i>
+                <p class="text-sm font-medium" style="color: var(--gold)">
+                  Barbershop Hero Image
+                </p>
+                <p class="text-xs text-gray-400 mt-1">
+                  Replace with your photo
+                </p>
+              </div>
+            </div>
+            <!-- Floating badge -->
+            <div
+              class="absolute -bottom-5 -left-5 bg-white shadow-xl rounded-2xl px-6 py-4 flex items-center gap-3"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center"
+              >
+                <i class="fa-solid fa-star text-gold"></i>
+              </div>
+              <div>
+                <p class="font-bold text-gray-900 text-sm">5.0 Rating</p>
+                <p class="text-xs text-gray-500">100+ Happy Clients</p>
+              </div>
+            </div>
+            <!-- Floating tag -->
+            <div
+              class="absolute -top-4 -right-4 bg-black text-white rounded-2xl px-4 py-3 text-xs font-semibold"
+            >
+              <p style="color: var(--gold)">Est. 2022</p>
+              <p>Port Harcourt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SERVICES ====== -->
+    <section id="services" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14 observe-fade">
+          <span
+            class="text-gold text-xs font-semibold tracking-widest uppercase"
+            >What We Offer</span
+          >
+          <h2
+            class="font-playfair text-4xl md:text-5xl font-bold mt-2 text-gray-900"
+          >
+            Our Services
+          </h2>
+          <div class="divider-gold mt-4 max-w-xs mx-auto">
+            <span class="text-gold text-lg">✂️</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Service Card -->
+          <div
+            class="service-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center observe-fade delay-100 cursor-pointer"
+            onclick="scrollToPricing()"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fa-solid fa-scissors text-2xl"
+                style="color: var(--gold)"
+              ></i>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Regular Haircut</h3>
+            <p class="text-xs text-gray-500 mb-4">
+              Classic precision cuts tailored to your style
+            </p>
+            <span class="text-gold font-bold text-lg">₦15,000</span>
+          </div>
+
+          <div
+            class="service-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center observe-fade delay-200 cursor-pointer"
+            onclick="scrollToPricing()"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fa-solid fa-spa text-2xl"
+                style="color: var(--gold)"
+              ></i>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Men's Facial</h3>
+            <p class="text-xs text-gray-500 mb-4">
+              Rejuvenating skin care for the modern man
+            </p>
+            <button
+              onclick="scrollToPricing()"
+              class="text-gold text-xs font-semibold hover:underline"
+            >
+              See Pricing →
+            </button>
+          </div>
+
+          <div
+            class="service-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center observe-fade delay-300 cursor-pointer"
+            onclick="scrollToPricing()"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fa-solid fa-crown text-2xl"
+                style="color: var(--gold)"
+              ></i>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Royal Shave</h3>
+            <p class="text-xs text-gray-500 mb-4">
+              Traditional hot towel shave experience
+            </p>
+            <span class="text-gold font-bold text-lg">₦8,000</span>
+          </div>
+
+          <div
+            class="service-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center observe-fade delay-400 cursor-pointer"
+            onclick="scrollToPricing()"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fa-solid fa-child text-2xl"
+                style="color: var(--gold)"
+              ></i>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Kids Haircut</h3>
+            <p class="text-xs text-gray-500 mb-4">
+              Patient, gentle cuts for the little ones
+            </p>
+            <span class="text-gold font-bold text-lg">₦5,000</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHY US + HOURS ====== -->
+    <section class="py-20 bg-black text-white relative overflow-hidden">
+      <div class="absolute inset-0 hero-pattern opacity-30"></div>
+      <div
+        class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center"
+      >
+        <!-- Why Choose Us -->
+        <div class="observe-fade">
+          <span
+            class="text-gold text-xs font-semibold tracking-widest uppercase"
+            >Why Us</span
+          >
+          <h2
+            class="font-playfair text-4xl md:text-5xl font-bold mt-2 mb-8 text-white"
+          >
+            Why Choose <span style="color: var(--gold)">Cut by Willy?</span>
+          </h2>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4 group">
+              <div
+                class="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300"
+              >
+                <i class="fa-solid fa-heart text-gold text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">
+                  Always Welcoming Environment
+                </h4>
+                <p class="text-gray-400 text-sm">
+                  Walk in as a client, leave as family. We create a space where
+                  every man feels at ease.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div
+                class="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300"
+              >
+                <i class="fa-solid fa-star text-gold text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">
+                  Masters Focused on Quality
+                </h4>
+                <p class="text-gray-400 text-sm">
+                  Our barbers are trained professionals who take pride in every
+                  cut, every time.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div
+                class="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300"
+              >
+                <i class="fa-solid fa-clock text-gold text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">
+                  We Value Your Time & Money
+                </h4>
+                <p class="text-gray-400 text-sm">
+                  Punctual service at fair prices — no surprises, no waiting
+                  around.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div
+                class="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300"
+              >
+                <i class="fa-solid fa-shield-halved text-gold text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">
+                  Premium Hypoallergenic Products
+                </h4>
+                <p class="text-gray-400 text-sm">
+                  We only use high-quality products that are safe for all skin
+                  types.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div
+                class="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300"
+              >
+                <i class="fa-solid fa-spray-can text-gold text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">
+                  Spotless Tools & Surfaces
+                </h4>
+                <p class="text-gray-400 text-sm">
+                  All equipment is cleaned and disinfected before and after
+                  every single use.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Working Hours -->
+        <div class="observe-fade delay-200">
+          <div
+            class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-8"
+          >
+            <h3
+              class="font-playfair text-3xl font-bold text-center mb-2"
+              style="color: var(--gold)"
+            >
+              Working Hours
+            </h3>
+            <div class="divider-gold mb-6">
+              <span class="text-gold text-sm">🕐</span>
+            </div>
+            <div class="space-y-3">
+              <div id="hours-list"></div>
+            </div>
+            <div class="mt-8 text-center">
+              <button
+                onclick="openBooking()"
+                class="btn-gold px-10 py-3.5 rounded-xl font-semibold text-sm w-full"
+              >
+                <i class="fa-solid fa-calendar-check mr-2"></i>Book Your Slot
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== GALLERY ====== -->
+    <section id="gallery" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14 observe-fade">
+          <span
+            class="text-gold text-xs font-semibold tracking-widest uppercase"
+            >Fresh Cuts</span
+          >
+          <h2
+            class="font-playfair text-4xl md:text-5xl font-bold mt-2 text-gray-900"
+          >
+            Our Gallery
+          </h2>
+          <div class="divider-gold mt-4 max-w-xs mx-auto">
+            <span class="text-gold text-lg">📸</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-72 flex items-center justify-center cursor-pointer"
+            onclick="openLightbox(this)"
+            data-src=""
+          >
+            <div class="text-center text-gray-400">
+              <i
+                class="fa-solid fa-image text-5xl mb-2"
+                style="color: var(--gold); opacity: 0.3"
+              ></i>
+              <p class="text-xs" style="color: var(--gold)">Gallery Photo 1</p>
+            </div>
+          </div>
+          <div
+            class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-72 flex items-center justify-center cursor-pointer"
+            onclick="openLightbox(this)"
+            data-src=""
+          >
+            <div class="text-center text-gray-400">
+              <i
+                class="fa-solid fa-image text-5xl mb-2"
+                style="color: var(--gold); opacity: 0.3"
+              ></i>
+              <p class="text-xs" style="color: var(--gold)">Gallery Photo 2</p>
+            </div>
+          </div>
+          <div
+            class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-72 flex items-center justify-center cursor-pointer"
+            onclick="openLightbox(this)"
+            data-src=""
+          >
+            <div class="text-center text-gray-400">
+              <i
+                class="fa-solid fa-image text-5xl mb-2"
+                style="color: var(--gold); opacity: 0.3"
+              ></i>
+              <p class="text-xs" style="color: var(--gold)">Gallery Photo 3</p>
+            </div>
+          </div>
+          <div
+            class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-72 flex items-center justify-center cursor-pointer"
+            onclick="openLightbox(this)"
+            data-src=""
+          >
+            <div class="text-center text-gray-400">
+              <i
+                class="fa-solid fa-image text-5xl mb-2"
+                style="color: var(--gold); opacity: 0.3"
+              ></i>
+              <p class="text-xs" style="color: var(--gold)">Gallery Photo 4</p>
+            </div>
+          </div>
+          <div
+            class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-72 flex items-center justify-center cursor-pointer"
+            onclick="openLightbox(this)"
+            data-src=""
+          >
+            <div class="text-center text-gray-400">
+              <i
+                class="fa-solid fa-image text-5xl mb-2"
+                style="color: var(--gold); opacity: 0.3"
+              ></i>
+              <p class="text-xs" style="color: var(--gold)">Gallery Photo 5</p>
+            </div>
+          </div>
+          <div
+            class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-72 flex items-center justify-center cursor-pointer"
+            onclick="openLightbox(this)"
+            data-src=""
+          >
+            <div class="text-center text-gray-400">
+              <i
+                class="fa-solid fa-image text-5xl mb-2"
+                style="color: var(--gold); opacity: 0.3"
+              ></i>
+              <p class="text-xs" style="color: var(--gold)">Gallery Photo 6</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PRICING ====== -->
+    <section id="pricing" class="py-20 bg-gray-50">
+      <div class="max-w-2xl mx-auto px-6">
+        <div class="text-center mb-12 observe-fade">
+          <span
+            class="text-gold text-xs font-semibold tracking-widest uppercase"
+            >Transparent Pricing</span
+          >
+          <h2
+            class="font-playfair text-4xl md:text-5xl font-bold mt-2 text-gray-900"
+          >
+            Price List
+          </h2>
+          <div class="divider-gold mt-4 max-w-xs mx-auto">
+            <span class="text-gold text-lg">💈</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl p-8 observe-fade delay-100">
+          <div id="price-list" class="space-y-1"></div>
+
+          <div class="mt-10 text-center">
+            <button
+              onclick="openBooking()"
+              class="btn-gold px-12 py-4 rounded-xl font-semibold text-sm w-full"
+            >
+              <i class="fa-solid fa-calendar-check mr-2"></i>Book an Appointment
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== REVIEWS ====== -->
+    <section id="reviews" class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-14 observe-fade">
+          <span
+            class="text-gold text-xs font-semibold tracking-widest uppercase"
+            >Testimonials</span
+          >
+          <h2
+            class="font-playfair text-4xl md:text-5xl font-bold mt-2 text-gray-900"
+          >
+            Customer Reviews
+          </h2>
+          <div class="divider-gold mt-4 max-w-xs mx-auto">
+            <span class="text-gold text-lg">⭐</span>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <!-- Review 1 -->
+          <div
+            class="review-card bg-gray-50 rounded-2xl p-6 border border-gray-100 observe-fade delay-100"
+          >
+            <div class="flex items-center gap-1 mb-4">
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed mb-5">
+              "The fade was super clean 🔥 Best barbing experience I've had in a
+              while! Willy really knows his craft. The environment was chill
+              too."
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center font-bold text-gold text-sm"
+              >
+                FS
+              </div>
+              <div>
+                <p class="font-semibold text-gray-800 text-sm">
+                  Feranmi Solomon
+                </p>
+                <p class="text-gray-400 text-xs">2 days ago</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div
+            class="review-card bg-gray-50 rounded-2xl p-6 border border-gray-100 observe-fade delay-200"
+          >
+            <div class="flex items-center gap-1 mb-4">
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+              <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed mb-5">
+              "Very professional service and neat environment. I'll definitely
+              come back. Everything was clean and the barber was super attentive
+              to what I wanted."
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center font-bold text-gold text-sm"
+              >
+                W
+              </div>
+              <div>
+                <p class="font-semibold text-gray-800 text-sm">Wisdom</p>
+                <p class="text-gray-400 text-xs">1 week ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leave a Review -->
+        <div
+          class="bg-gray-50 rounded-3xl p-8 border border-gray-100 observe-fade"
+        >
+          <h3 class="font-playfair text-2xl font-bold mb-6 text-gray-900">
+            Leave a Review
+          </h3>
+          <div class="flex items-center gap-2 mb-6">
+            <span class="text-sm text-gray-600 mr-2">Your rating:</span>
+            <div id="star-rating" class="flex gap-1">
+              <i
+                class="fa-regular fa-star text-2xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors"
+                data-val="1"
+                onclick="setRating(1)"
+              ></i>
+              <i
+                class="fa-regular fa-star text-2xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors"
+                data-val="2"
+                onclick="setRating(2)"
+              ></i>
+              <i
+                class="fa-regular fa-star text-2xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors"
+                data-val="3"
+                onclick="setRating(3)"
+              ></i>
+              <i
+                class="fa-regular fa-star text-2xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors"
+                data-val="4"
+                onclick="setRating(4)"
+              ></i>
+              <i
+                class="fa-regular fa-star text-2xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors"
+                data-val="5"
+                onclick="setRating(5)"
+              ></i>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4 mb-4">
+            <input
+              type="text"
+              id="reviewName"
+              placeholder="Your Name"
+              class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm bg-white"
+            />
+            <input
+              type="text"
+              id="reviewService"
+              placeholder="Service Received"
+              class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm bg-white"
+            />
+          </div>
+          <textarea
+            id="reviewText"
+            rows="3"
+            placeholder="Share your experience..."
+            class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm bg-white resize-none mb-4"
+          ></textarea>
+          <button
+            onclick="submitReview()"
+            class="btn-gold px-8 py-3 rounded-xl font-semibold text-sm"
+          >
+            <i class="fa-solid fa-paper-plane mr-2"></i>Submit Review
+          </button>
+        </div>
+
+        <!-- Dynamic Reviews Container -->
+        <div id="dynamic-reviews" class="mt-6 space-y-4"></div>
+      </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section
+      id="contact"
+      class="py-20 bg-black text-white relative overflow-hidden"
+    >
+      <div class="absolute inset-0 hero-pattern opacity-20"></div>
+      <div
+        class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-start"
+      >
+        <!-- Info -->
+        <div class="observe-fade">
+          <span
+            class="text-gold text-xs font-semibold tracking-widest uppercase"
+            >Get in Touch</span
+          >
+          <h2 class="font-playfair text-4xl font-bold mt-2 mb-6">
+            Contact <span style="color: var(--gold)">Us</span>
+          </h2>
+          <p class="text-gray-400 mb-8 leading-relaxed">
+            Have questions or want to book an appointment? Reach out to us
+            anytime — we're here for you.
+          </p>
+
+          <div class="space-y-5">
+            <a
+              href="https://maps.google.com/?q=21+Dike+street+Iwofe+Port+Harcourt"
+              target="_blank"
+              class="flex items-center gap-4 group"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300"
+              >
+                <i
+                  class="fa-solid fa-location-dot text-gold group-hover:text-white text-sm transition-colors"
+                ></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                  Location
+                </p>
+                <p
+                  class="text-white text-sm group-hover:text-gold transition-colors"
+                >
+                  21 Dike Street, Iwofe, Port Harcourt
+                </p>
+              </div>
+            </a>
+            <a href="tel:+2347089344370" class="flex items-center gap-4 group">
+              <div
+                class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300"
+              >
+                <i
+                  class="fa-solid fa-phone text-gold group-hover:text-white text-sm transition-colors"
+                ></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                  Phone
+                </p>
+                <p
+                  class="text-white text-sm group-hover:text-gold transition-colors"
+                >
+                  +234 708 934 4370
+                </p>
+              </div>
+            </a>
+            <a
+              href="mailto:info@cutbywilly.com"
+              class="flex items-center gap-4 group"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300"
+              >
+                <i
+                  class="fa-solid fa-envelope text-gold group-hover:text-white text-sm transition-colors"
+                ></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                  Email
+                </p>
+                <p
+                  class="text-white text-sm group-hover:text-gold transition-colors"
+                >
+                  info@cutbywilly.com
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="mt-8 flex gap-3">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="w-10 h-10 rounded-xl bg-white/10 hover:bg-gold flex items-center justify-center text-white transition-all duration-300"
+              ><i class="fa-brands fa-instagram text-sm"></i
+            ></a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              class="w-10 h-10 rounded-xl bg-white/10 hover:bg-gold flex items-center justify-center text-white transition-all duration-300"
+              ><i class="fa-brands fa-x-twitter text-sm"></i
+            ></a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="w-10 h-10 rounded-xl bg-white/10 hover:bg-gold flex items-center justify-center text-white transition-all duration-300"
+              ><i class="fa-brands fa-facebook-f text-sm"></i
+            ></a>
+            <a
+              href="https://wa.me/2347089344370"
+              target="_blank"
+              class="w-10 h-10 rounded-xl bg-white/10 hover:bg-gold flex items-center justify-center text-white transition-all duration-300"
+              ><i class="fa-brands fa-whatsapp text-sm"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="observe-fade delay-200">
+          <div
+            class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-8"
+          >
+            <h3 class="font-playfair text-2xl font-bold mb-6 text-white">
+              Send a Message
+            </h3>
+            <div class="space-y-4">
+              <input
+                type="text"
+                id="contactName"
+                placeholder="Full Name"
+                class="form-input w-full bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-xl p-3.5 text-sm focus:border-gold"
+              />
+              <input
+                type="email"
+                id="contactEmail"
+                placeholder="Email Address"
+                class="form-input w-full bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-xl p-3.5 text-sm focus:border-gold"
+              />
+              <select
+                id="contactSubject"
+                class="form-input w-full bg-white/10 border border-white/20 text-gray-400 rounded-xl p-3.5 text-sm focus:border-gold"
+                style="background-color: rgba(255, 255, 255, 0.1)"
+              >
+                <option value="" disabled selected>Select Subject</option>
+                <option value="booking" style="color: #111">
+                  Book Appointment
+                </option>
+                <option value="inquiry" style="color: #111">
+                  General Inquiry
+                </option>
+                <option value="pricing" style="color: #111">
+                  Pricing Question
+                </option>
+                <option value="other" style="color: #111">Other</option>
+              </select>
+              <textarea
+                id="contactMessage"
+                rows="4"
+                placeholder="Your Message"
+                class="form-input w-full bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-xl p-3.5 text-sm resize-none focus:border-gold"
+              ></textarea>
+              <button
+                onclick="submitContact()"
+                class="btn-gold w-full py-4 rounded-xl font-semibold text-sm"
+              >
+                <i class="fa-solid fa-paper-plane mr-2"></i>Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="bg-[#0a0a0a] text-gray-400 py-14">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div>
+            <h2
+              class="font-playfair text-2xl font-bold mb-3"
+              style="color: var(--gold)"
+            >
+              Cut by Willy
+            </h2>
+            <p class="text-sm text-gray-500 leading-relaxed max-w-xs">
+              Premium grooming experience. Sharp cuts, clean fades, and classic
+              styles — delivered with precision.
+            </p>
+          </div>
+          <div>
+            <h3
+              class="text-white font-semibold mb-4 text-sm uppercase tracking-wider"
+            >
+              Quick Links
+            </h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#home" class="hover:text-gold transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="hover:text-gold transition-colors"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="#pricing" class="hover:text-gold transition-colors"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#gallery" class="hover:text-gold transition-colors"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-gold transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3
+              class="text-white font-semibold mb-4 text-sm uppercase tracking-wider"
+            >
+              Book a Cut
+            </h3>
+            <p class="text-sm text-gray-500 mb-4">
+              Ready for a fresh look? Book your appointment online in seconds.
+            </p>
+            <button
+              onclick="openBooking()"
+              class="btn-gold px-6 py-3 rounded-xl text-sm font-semibold"
+            >
+              Book Online
+            </button>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-xs text-gray-600">
+            © 2026 Cut by Willy Barbershop. All rights reserved.
+          </p>
+          <div class="flex gap-5 text-xs">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="hover:text-gold transition-colors"
+              >Instagram</a
+            >
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="hover:text-gold transition-colors"
+              >Facebook</a
+            >
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              class="hover:text-gold transition-colors"
+              >Twitter</a
+            >
+            <a
+              href="https://wa.me/2347089344370"
+              target="_blank"
+              class="hover:text-gold transition-colors"
+              >WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ====== BOOKING MODAL ====== -->
+    <div
+      id="bookingModal"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white w-full max-w-md mx-4 rounded-3xl shadow-2xl overflow-hidden animate-scale-in"
+      >
+        <div class="bg-black px-8 py-6 flex justify-between items-center">
+          <div>
+            <h2 class="font-playfair text-2xl font-bold text-white">
+              Book Appointment
+            </h2>
+            <p class="text-gray-400 text-sm mt-1">Cut by Willy Barbershop</p>
+          </div>
+          <button
+            onclick="closeBooking()"
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="p-8 space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label
+                class="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1.5 block"
+                >First Name</label
+              >
+              <input
+                type="text"
+                id="bookFirstName"
+                placeholder="John"
+                class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm"
+              />
+            </div>
+            <div>
+              <label
+                class="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1.5 block"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                id="bookLastName"
+                placeholder="Doe"
+                class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1.5 block"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              id="bookPhone"
+              placeholder="+234 800 000 0000"
+              class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm"
+            />
+          </div>
+          <div>
+            <label
+              class="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1.5 block"
+              >Service</label
+            >
+            <select
+              id="bookService"
+              class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm bg-white"
+            >
+              <option value="">Select a service…</option>
+              <option>Regular Haircut – ₦15,000</option>
+              <option>Skin Fade – ₦10,000</option>
+              <option>Beard Trim – ₦8,000</option>
+              <option>Haircut + Beard – ₦18,000</option>
+              <option>Kids Haircut – ₦5,000</option>
+              <option>Home Service – ₦15,000</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label
+                class="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1.5 block"
+                >Date</label
+              >
+              <input
+                type="date"
+                id="bookDate"
+                class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm"
+              />
+            </div>
+            <div>
+              <label
+                class="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1.5 block"
+                >Time</label
+              >
+              <select
+                id="bookTime"
+                class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm bg-white"
+              >
+                <option value="">Select time…</option>
+                <option>8:00 AM</option>
+                <option>9:00 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>12:00 PM</option>
+                <option>1:00 PM</option>
+                <option>2:00 PM</option>
+                <option>3:00 PM</option>
+                <option>4:00 PM</option>
+                <option>5:00 PM</option>
+                <option>6:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label
+              class="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1.5 block"
+              >Additional Notes (optional)</label
+            >
+            <textarea
+              id="bookNotes"
+              rows="2"
+              placeholder="Any special requests?"
+              class="form-input w-full border border-gray-200 rounded-xl p-3 text-sm resize-none"
+            ></textarea>
+          </div>
+          <button
+            onclick="confirmBooking()"
+            class="btn-gold w-full py-4 rounded-xl font-semibold text-sm mt-2"
+          >
+            <i class="fa-solid fa-calendar-check mr-2"></i>Confirm Booking
+          </button>
+          <p class="text-center text-xs text-gray-400 mt-2">
+            We'll confirm via WhatsApp or call within 30 minutes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Success Modal -->
+    <div
+      id="bookingSuccess"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white w-80 rounded-3xl shadow-2xl p-8 text-center animate-scale-in"
+      >
+        <div
+          class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <i class="fa-solid fa-check text-green-500 text-2xl"></i>
+        </div>
+        <h3 class="font-playfair text-2xl font-bold text-gray-900 mb-2">
+          Booking Confirmed!
+        </h3>
+        <p id="bookingDetails" class="text-gray-500 text-sm mb-6"></p>
+        <button
+          onclick="closeBookingSuccess()"
+          class="btn-gold px-8 py-3 rounded-xl font-semibold text-sm w-full"
+        >
+          Awesome, Thanks! ✂️
         </button>
       </div>
     </div>
 
-    <!-- Page Content -->
-    <div class="p-10 text-center">
-      <h1 class="text-3xl font-bold"></h1>
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox()">
+      <button class="absolute top-6 right-6 text-white text-2xl z-10">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightboxImg" src="" alt="Gallery" />
     </div>
 
-    <script>
-      function closePopup() {
-        document.getElementById("welcomePopup").classList.add("hidden");
-      }
-    </script>
+    <!-- Toast -->
+    <div id="toast">
+      <i class="fa-solid fa-check-circle mr-2" style="color: var(--gold)"></i
+      ><span id="toastMsg"></span>
+    </div>
+
+    <!-- Back to Top -->
+    <button
+      id="backToTop"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      title="Back to top"
+    >
+      <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+
+    <script src="/main,js"></script>
   </body>
 </html>

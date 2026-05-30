@@ -1,0 +1,250 @@
+// ── Data ──────────────────────────────────────────────
+    const hours = [
+      { day: "Sunday",    time: "10:00 AM – 5:00 PM" },
+      { day: "Monday",    time: "9:00 AM – 7:00 PM"  },
+      { day: "Tuesday",   time: "8:00 AM – 8:00 PM"  },
+      { day: "Wednesday", time: "8:00 AM – 8:00 PM"  },
+      { day: "Thursday",  time: "8:00 AM – 8:00 PM"  },
+      { day: "Friday",    time: "8:00 AM – 7:00 PM"  },
+      { day: "Saturday",  time: "9:00 AM – 6:00 PM"  },
+    ];
+    const prices = [
+      { name: "Regular Haircut", price: "₦15,000", icon: "fa-scissors" },
+      { name: "Skin Fade",       price: "₦10,000", icon: "fa-scissors" },
+      { name: "Beard Trim",      price: "₦8,000",  icon: "fa-user"     },
+      { name: "Haircut + Beard", price: "₦18,000", icon: "fa-scissors" },
+      { name: "Kids Haircut",    price: "₦5,000",  icon: "fa-child"    },
+      { name: "Home Service",    price: "₦15,000", icon: "fa-house"    },
+    ];
+ 
+    // ── Init ──────────────────────────────────────────────
+    window.addEventListener('DOMContentLoaded', () => {
+      renderHours();
+      renderPrices();
+      setTodayMin();
+      initObserver();
+      initNavScroll();
+      initBackToTop();
+    });
+ 
+    function renderHours() {
+      const today = new Date().getDay(); // 0=Sun,6=Sat
+      const el = document.getElementById('hours-list');
+      el.innerHTML = hours.map((h, i) => {
+        const isToday = i === today;
+        return `<div class="flex justify-between items-center py-2.5 px-3 rounded-xl ${isToday ? 'bg-gold/20' : ''}">
+          <span class="text-sm ${isToday ? 'text-gold font-semibold' : 'text-gray-300'}">${h.day}${isToday ? ' <span class="text-xs bg-gold text-white px-2 py-0.5 rounded-full ml-1">Today</span>' : ''}</span>
+          <span class="text-sm font-medium ${isToday ? 'text-gold' : 'text-white'}">${h.time}</span>
+        </div>`;
+      }).join('');
+    }
+ 
+    function renderPrices() {
+      const el = document.getElementById('price-list');
+      el.innerHTML = prices.map(p => `
+        <div class="price-row flex justify-between items-center border-b border-gray-100 last:border-0 cursor-pointer" onclick="preSelectService('${p.name} – ${p.price}')">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center">
+              <i class="fa-solid ${p.icon} text-gold text-xs"></i>
+            </div>
+            <span class="text-gray-800 font-medium text-sm">${p.name}</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-bold text-gray-900">${p.price}</span>
+            <button class="text-xs btn-gold px-3 py-1.5 rounded-lg opacity-0 group-price-btn transition-opacity">Book</button>
+          </div>
+        </div>`).join('');
+    }
+ 
+    function setTodayMin() {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('bookDate');
+      if (dateInput) dateInput.min = today;
+    }
+ 
+    // ── Popup ─────────────────────────────────────────────
+    function closePopup() {
+      const popup = document.getElementById('welcomePopup');
+      popup.classList.add('hiding');
+      setTimeout(() => popup.classList.add('hidden'), 400);
+    }
+ 
+    // ── Mobile Menu ───────────────────────────────────────
+    let menuOpen = false;
+    function toggleMobileMenu() {
+      menuOpen = !menuOpen;
+      const menu = document.getElementById('mobileMenu');
+      const b1 = document.getElementById('bar1');
+      const b2 = document.getElementById('bar2');
+      const b3 = document.getElementById('bar3');
+      menu.classList.toggle('open', menuOpen);
+      if (menuOpen) {
+        b1.style.transform = 'translateY(8px) rotate(45deg)';
+        b2.style.opacity = '0';
+        b3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        b1.style.transform = ''; b2.style.opacity = '1'; b3.style.transform = '';
+      }
+    }
+    function closeMobileMenu() {
+      if (menuOpen) toggleMobileMenu();
+    }
+ 
+    // ── Navbar scroll ──────────────────────────────────────
+    function initNavScroll() {
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        nav.classList.toggle('navbar-scrolled', window.scrollY > 50);
+      });
+    }
+ 
+    // ── Back to top ────────────────────────────────────────
+    function initBackToTop() {
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      });
+    }
+ 
+    // ── Scroll animations ──────────────────────────────────
+    function initObserver() {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.remove('opacity-0-init');
+            e.target.classList.add('animate-fade-up');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.observe-fade').forEach(el => {
+        el.classList.add('opacity-0-init');
+        obs.observe(el);
+      });
+    }
+ 
+    // ── Booking Modal ──────────────────────────────────────
+    function openBooking() {
+      document.getElementById('bookingModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBooking() {
+      document.getElementById('bookingModal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    function preSelectService(name) {
+      document.getElementById('bookService').value = name;
+      openBooking();
+    }
+    function confirmBooking() {
+      const first   = document.getElementById('bookFirstName').value.trim();
+      const last    = document.getElementById('bookLastName').value.trim();
+      const phone   = document.getElementById('bookPhone').value.trim();
+      const service = document.getElementById('bookService').value;
+      const date    = document.getElementById('bookDate').value;
+      const time    = document.getElementById('bookTime').value;
+      if (!first || !phone || !service || !date || !time) {
+        showToast('Please fill in all required fields.');
+        return;
+      }
+      closeBooking();
+      const details = document.getElementById('bookingDetails');
+      details.textContent = `${first} ${last} — ${service} on ${formatDate(date)} at ${time}. We'll confirm via WhatsApp or call.`;
+      document.getElementById('bookingSuccess').classList.remove('hidden');
+      resetForm(['bookFirstName','bookLastName','bookPhone','bookService','bookDate','bookTime','bookNotes']);
+    }
+    function closeBookingSuccess() {
+      document.getElementById('bookingSuccess').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    function formatDate(d) {
+      return new Date(d + 'T12:00').toLocaleDateString('en-NG', {weekday:'short', year:'numeric', month:'long', day:'numeric'});
+    }
+ 
+    // ── Contact Form ───────────────────────────────────────
+    function submitContact() {
+      const name    = document.getElementById('contactName').value.trim();
+      const email   = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      if (!name || !email || !message) {
+        showToast('Please fill in all required fields.');
+        return;
+      }
+      if (!email.includes('@')) { showToast('Please enter a valid email.'); return; }
+      showToast('Message sent! We\'ll get back to you soon. ✅');
+      resetForm(['contactName','contactEmail','contactMessage']);
+      document.getElementById('contactSubject').selectedIndex = 0;
+    }
+ 
+    // ── Reviews ────────────────────────────────────────────
+    let currentRating = 0;
+    function setRating(val) {
+      currentRating = val;
+      const stars = document.querySelectorAll('#star-rating i');
+      stars.forEach((s, i) => {
+        s.className = i < val
+          ? 'fa-solid fa-star text-2xl text-yellow-400 cursor-pointer transition-colors'
+          : 'fa-regular fa-star text-2xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors';
+      });
+    }
+    function submitReview() {
+      const name    = document.getElementById('reviewName').value.trim();
+      const service = document.getElementById('reviewService').value.trim();
+      const text    = document.getElementById('reviewText').value.trim();
+      if (!name || !text || currentRating === 0) {
+        showToast('Please fill in your name, rating, and review.');
+        return;
+      }
+      const stars = Array.from({length:5}, (_,i) =>
+        `<i class="fa-${i<currentRating?'solid':'regular'} fa-star text-yellow-400 text-xs"></i>`).join('');
+      const card = document.createElement('div');
+      card.className = 'review-card bg-gray-50 rounded-2xl p-6 border border-gray-100 animate-fade-up';
+      card.innerHTML = `
+        <div class="flex items-center gap-1 mb-4">${stars}</div>
+        <p class="text-gray-700 text-sm leading-relaxed mb-5">"${escapeHtml(text)}"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center font-bold text-gold text-sm">${name[0].toUpperCase()}</div>
+          <div>
+            <p class="font-semibold text-gray-800 text-sm">${escapeHtml(name)}${service ? ' · <span class="text-gold text-xs">'+escapeHtml(service)+'</span>' : ''}</p>
+            <p class="text-gray-400 text-xs">Just now</p>
+          </div>
+        </div>`;
+      document.getElementById('dynamic-reviews').prepend(card);
+      showToast('Thank you for your review! 🙏');
+      resetForm(['reviewName','reviewService','reviewText']);
+      setRating(0);
+    }
+ 
+    // ── Gallery Lightbox ───────────────────────────────────
+    function openLightbox(el) {
+      const src = el.dataset.src;
+      if (!src) { showToast('Add your photos to enable gallery preview.'); return; }
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+ 
+    // ── Helper: scroll to pricing ──────────────────────────
+    function scrollToPricing() {
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+    }
+ 
+    // ── Toast ──────────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3500);
+    }
+ 
+    // ── Utilities ──────────────────────────────────────────
+    function resetForm(ids) { ids.forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; }); }
+    function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+ 
+    // Close modals on backdrop click
+    document.getElementById('bookingModal').addEventListener('click', function(e) {
+      if (e.target === this) closeBooking();
+    });
+    document.getElementById('bookingSuccess').addEventListener('click', function(e) {
+      if (e.target === this) closeBookingSuccess();
+    });
